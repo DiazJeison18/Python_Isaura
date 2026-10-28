@@ -1,0 +1,47 @@
+CREAR UNA APP CON FLASK
+
+Paso 1: Preparación del Entorno en MySQL
+Abre tu cliente de base de datos MySQL (por ejemplo, MySQL Workbench o la extensión de MySQL en VS Code).
+Ejecuta el comando SQL para crear la base de datos necesaria para el proyecto:
+ CREATE DATABASE flask_sqlalchemy;
+
+Paso 2: Configuración del Proyecto en VS Code:
+Crea una carpeta vacía en tu computadora llamada CRUD_SQLAlchemy.
+Abre VS Code, dirígete al menú superior File > Open Folder... (Archivo > Abrir carpeta...) y selecciona la carpeta que acabas de crear.
+Abre una terminal integrada de VS Code yendo al menú Terminal > New Terminal (o presionando `Ctrl + Shift + ``).
+Crea y activa tu entorno virtual de Python ejecutando los siguientes comandos en la terminal:
+Windows: 
+Crear el entorno: python -m venv venv 
+Activar el entorno: .\venv\Scripts\Activate.ps1
+Linux (git bash):
+Crear el entorno: python3 -m venv venv 
+Activar el entorno: source venv/bin/activate
+Paso 3: Instalación de Dependencias para MySQL
+Con el entorno virtual activo en tu terminal de VS Code, ejecuta la instalación limpia de las librerías necesarias. Para conectar Flask con MySQL de forma nativa y robusta a través de SQLAlchemy, utilizaremos el conector compatible pymysql:
+python -m pip install flask flask-sqlalchemy flask-migrate pymysql
+
+Paso 4: Creación del Código Base (app.py)
+En el explorador de archivos de VS Code (a la izquierda), haz clic en el icono de New File (Nuevo archivo), nomíralo app.py y pega el siguiente código estructurado:
+
+
+
+Paso 5: Ejecución de Migraciones en la Base de Datos
+Regresa a la terminal de VS Code (asegúrate de que el entorno virtual siga activo) y ejecuta en orden los comandos de Flask-Migrate para mapear tu modelo a la base de datos de MySQL:
+Inicializar la carpeta de migraciones
+flask db init
+Generar el archivo de migración inicial (Detectará la estructura de MySQL de forma nativa):
+flask db migrate -m "Migración inicial MySQL"
+Aplicar los cambios físicos a la base de datos: 
+flask db upgrade
+Si vas a tu manejador de MySQL, verás que la tabla person se ha creado perfectamente junto a alembic_version.
+Paso 6: Lanzar la Aplicación en Modo Debug
+Para arrancar el servidor de desarrollo dentro de VS Code, ejecuta en la terminal: flask --debug run
+
+
+Otros comandos:
+pip freeze > requirements.txt : lo utilizamos para crear el archivo requirements.txt, el cual tendrá todas las librerías utilizadas con su respectiva versión.
+
+como instalar las librerías a partir de un archivo de requirements:
+pip install -r requirements.txt 
+
+
